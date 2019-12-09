@@ -1,0 +1,21 @@
+{
+  "name": "calculator",
+  "version": "1.0.0",
+  "description": "this is Electron project",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-packager ./ Calculator --all --out ./CalculatorApp --overwrite"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "3.4.1",
+    "electron": "7.1.3"
+  },
+  "devDependencies": {
+    "electron": "^7.1.3",
+    "electron-packager": "^14.1.1",
+    "jquery": "^3.4.1"
+  }
+}

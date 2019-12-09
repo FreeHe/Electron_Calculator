@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>window.$ = require('jquery');</script>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+  </head>
+  <body>
+    <input type="text" class="show-panel">
+    <div class="option">
+      <button class="button cos">cos(x)</button>
+      <button class="button sin">sin(x)</button>
+      <button class="button tan">tan(x)</button>
+      <button class="button sqrt">sqrt(x)</button>
+    </div>
+    <div class="option">
+      <button class="button C">C</button>
+      <button class="button divs">/</button>
+      <button class="button X">X</button>
+      <button class="button BACK">BACK</button>
+    </div>
+    <div class="option">
+      <button class="button 7">7</button>
+      <button class="button 8">8</button>
+      <button class="button 9">9</button>
+      <button class="button -">-</button>
+    </div>
+    <div class="option">
+      <button class="button 4">4</button>
+      <button class="button 5">5</button>
+      <button class="button 6">6</button>
+      <button class="button plus">+</button>
+    </div>
+    <div class="option">
+      <button class="button 1">1</button>
+      <button class="button 2">2</button>
+      <button class="button 3">3</button>
+      <button class="button log">log</button>
+    </div>
+    <div class="option">
+      <button class="button right">)</button>
+      <button class="button 0">0</button>
+      <button class="button dots">.</button>
+      <button class="button eval">=</button>
+    </div>
+  </body>
+
+
+  <style>
+    body {
+      background-color: #212121;
+    }
+    .show-panel {
+      background-color: #212121;
+      width: 100%;
+      height: 40px;
+      font-size: 30px;
+      color: #fff;
+      border-width: 1px;
+      border-style: solid;
+      border-radius: 5%;
+      border-color: #d1655c;
+    }
+    .option {
+      color: #d1655c;
+      height: 60px;
+      width: 100%;
+    }
+    .button {
+      border-width: 1px;
+      border-style: solid;
+      border-radius: 5%;
+      border-color: #d1655c;
+      color: #fff;
+      float: left;
+      width: 22%;
+      margin-top: 15px;
+      margin-left: 5px;
+      height: 30px;
+      line-height: 1.3;
+      background-color: #212121;
+    }
+  </style>
+
+
+  <script>
+    function C(){
+      $('.show-panel').val("");
+    };
+    function Eval(){
+      $('.show-panel').attr('placeholder', '');
+      var res = $('.show-panel').val();
+      res = res.replace(/sqrt/g, "Math.sqrt");
+      res = res.replace(/cos/g, "Math.cos");
+      res = res.replace(/sin/g, "Math.sin");
+      res = res.replace(/log/g, "Math.log");
+      res = res.replace(/tan/g, "Math.tan");
+      res = res.replace(/x/g, "*");
+      console.log(res);
+      try{
+        var result = eval(res);
+        $('.show-panel').val(result);
+      }catch(e){
+        $('.show-panel').val("");
+        $('.show-panel').attr('placeholder', '出错');
+      }
+    }
+    function BACK(){
+      var t = $('.show-panel').val();
+      $('.show-panel').val(t.slice(0, -1));
+    };
+    $(function(){
+      var text = $('.show-panel');
+      $('.C').bind('click', C);
+      $('.BACK').bind('click', BACK);
+      $('.0').bind('click', function(){
+        text.val(text.val()+"0");
+      });
+      $('.1').bind('click', function(){
+        text.val(text.val()+"1");
+      });
+      $('.2').bind('click', function(){
+        text.val(text.val()+"2");
+      });
+      $('.3').bind('click', function(){
+        text.val(text.val()+"3");
+      });
+      $('.4').bind('click', function(){
+        text.val(text.val()+"4");
+      });
+      $('.5').bind('click', function(){
+        text.val(text.val()+"5");
+      });
+      $('.6').bind('click', function(){
+        text.val(text.val()+"6");
+      });
+      $('.7').bind('click', function(){
+        text.val(text.val()+"7");
+      });
+      $('.8').bind('click', function(){
+        text.val(text.val()+"8");
+      });
+      $('.9').bind('click', function(){
+        text.val(text.val()+"9");
+      });
+      $('.-').bind('click', function(){
+        text.val(text.val()+"-");
+      });
+      $('.plus').bind('click', function(){
+        text.val(text.val()+"+");
+      });
+      $('.X').bind('click', function(){
+        text.val(text.val()+"x");
+      });
+      $('.divs').bind('click', function(){
+        text.val(text.val()+"/");
+      });
+      $('.dots').bind('click', function(){
+        text.val(text.val()+".");
+      });
+      $('.cos').bind('click', function(){
+        text.val(text.val()+"cos(");
+      });
+      $('.sin').bind('click', function(){
+        text.val(text.val()+"sin(");
+      });
+      $('.tan').bind('click', function(){
+        text.val(text.val()+"tan(");
+      });
+      $('.sqrt').bind('click', function(){
+        text.val(text.val()+"sqrt(");
+      });
+      $('.log').bind('click', function(){
+        text.val(text.val()+"log(");
+      });
+      $('.right').bind('click', function(){
+        text.val(text.val()+")");
+      });
+      $('.eval').bind('click', Eval);
+    })
+  </script>
+</html>
